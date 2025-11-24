@@ -2,7 +2,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="icon" type="image/png" href="./CILKGax_d.webp">
+		<link rel="icon" type="image/webp" href="./CILKGax_d.webp">
 		<title>Anh Yêu Em</title>	    
         <link type="text/css" rel="stylesheet" href="./qd/default.css">
 		<script type="text/javascript" src="./qd/jquery.min.js"></script>
@@ -163,9 +163,7 @@
             tree.snapshot("p2", 500, 0, 610, 680);
 
             canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
+            canvas.css("background", "transparent");
         }));
 
         var jumpAnimate = eval(Jscex.compile("async", function () {
@@ -180,7 +178,7 @@
 
         var textAnimate = eval(Jscex.compile("async", function () {
 		    var together = new Date();
-		    var year = 2017, month = 7, day = 20; // (2) thay đổi ngày tháng năm yêu nhau tại đây
+		    var year = 2025, month = 2, day = 14; // (2) thay đổi ngày tháng năm yêu nhau tại đây
 		    together.setFullYear(year, month - 1, day); 			
 		    together.setHours(0);							
 		    together.setMinutes(0);				
@@ -214,7 +212,23 @@
 <p>Hỗ trợ: <a  href="https://www.facebook.com/tranthoilong" title="Facebook" target="_blank style="color= #f00">Facebook</a></p>
 
 </div>
-<iframe src="./Em.mp3" width="1" height="1" frameborder="0" allowfullscreen></iframe> <!-- (3) Thay đổi nhạc tại đây-->
+<audio id="background-music" autoplay loop>
+	<source src="./Em.mp3" type="audio/mpeg">
+	Trình duyệt của bạn không hỗ trợ thẻ audio.
+</audio> <!-- (3) Thay đổi nhạc tại đây-->
+<script>
+	// Đảm bảo nhạc tự động phát sau khi trang tải
+	document.addEventListener('DOMContentLoaded', function() {
+		var audio = document.getElementById('background-music');
+		audio.volume = 0.5; // Đặt âm lượng 50%
+		audio.play().catch(function(error) {
+			// Nếu autoplay bị chặn, thử phát sau khi người dùng tương tác
+			document.addEventListener('click', function() {
+				audio.play();
+			}, { once: true });
+		});
+	});
+</script>
 
 <style>
 
